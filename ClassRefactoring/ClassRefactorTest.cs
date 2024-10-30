@@ -8,7 +8,7 @@ namespace DeveloperSample.ClassRefactoring
         public void AfricanSwallowHasCorrectSpeed()
         {
             var swallowFactory = new SwallowFactory();
-            var swallow = swallowFactory.GetSwallow(SwallowType.African);
+            var swallow = swallowFactory.GetSwallow(SwallowType.African, SwallowLoad.None);
             Assert.Equal(22, swallow.GetAirspeedVelocity());
         }
 
@@ -16,8 +16,7 @@ namespace DeveloperSample.ClassRefactoring
         public void LadenAfricanSwallowHasCorrectSpeed()
         {
             var swallowFactory = new SwallowFactory();
-            var swallow = swallowFactory.GetSwallow(SwallowType.African);
-            swallow.ApplyLoad(SwallowLoad.Coconut);
+            var swallow = swallowFactory.GetSwallow(SwallowType.African, SwallowLoad.Coconut);
             Assert.Equal(18, swallow.GetAirspeedVelocity());
         }
 
@@ -25,7 +24,7 @@ namespace DeveloperSample.ClassRefactoring
         public void EuropeanSwallowHasCorrectSpeed()
         {
             var swallowFactory = new SwallowFactory();
-            var swallow = swallowFactory.GetSwallow(SwallowType.European);
+            var swallow = swallowFactory.GetSwallow(SwallowType.European, SwallowLoad.None);
             Assert.Equal(20, swallow.GetAirspeedVelocity());
         }
 
@@ -33,8 +32,7 @@ namespace DeveloperSample.ClassRefactoring
         public void LadenEuropeanSwallowHasCorrectSpeed()
         {
             var swallowFactory = new SwallowFactory();
-            var swallow = swallowFactory.GetSwallow(SwallowType.European);
-            swallow.ApplyLoad(SwallowLoad.Coconut);
+            var swallow = swallowFactory.GetSwallow(SwallowType.European, SwallowLoad.Coconut);
             Assert.Equal(16, swallow.GetAirspeedVelocity());
         }
     }

@@ -7,19 +7,22 @@ namespace DeveloperSample.Syncing
     public class SyncTest
     {
         [Fact]
-        public void CanInitializeCollection()
+        public async void CanInitializeCollection()
         {
             var debug = new SyncDebug();
             var items = new List<string> { "one", "two" };
-            var result = debug.InitializeList(items);
+            var result = await debug.InitializeListAsync(items);
+
             Assert.Equal(items.Count, result.Count);
+            Assert.All(items, item => Assert.Contains(item, result));
         }
 
-        [Fact(Skip="Not implemented")]
+        [Fact]
         public void ItemsOnlyInitializeOnce()
         {
             var debug = new SyncDebug();
             var count = 0;
+
             var dictionary = debug.InitializeDictionary(i =>
             {
                 Thread.Sleep(1);
